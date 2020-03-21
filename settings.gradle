@@ -1,0 +1,3 @@
+rootProject.name='connectsdk-aar'
+include ':app'
+include ':connectsdklib'
