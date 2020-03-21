@@ -20,6 +20,8 @@
 
 package com.connectsdk.core;
 
+import java.net.Inet4Address;
+import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Date;
@@ -37,7 +39,6 @@ import android.os.Looper;
 import com.connectsdk.service.capability.listeners.ErrorListener;
 import com.connectsdk.service.capability.listeners.ResponseListener;
 import com.connectsdk.service.command.ServiceCommandError;
-import com.google.android.gms.common.util.HttpUtils;
 
 public final class Util {
     static public String T = "Connect SDK";
@@ -131,11 +132,19 @@ public final class Util {
     }
 
     public static boolean isIPv4Address(String ipAddress) {
-        return HttpUtils.isIPv4Address(ipAddress);
+        try {
+            return Inet4Address.getByName(ipAddress) != null;
+        } catch (UnknownHostException ex) {
+            return false;
+        }
     }
 
     public static boolean isIPv6Address(String ipAddress) {
-        return HttpUtils.isIPv6Address(ipAddress);
+        try {
+            return Inet6Address.getByName(ipAddress) != null;
+        } catch (UnknownHostException ex) {
+            return false;
+        }
     }
 
     public static InetAddress getIpAddress(Context context) throws UnknownHostException {
