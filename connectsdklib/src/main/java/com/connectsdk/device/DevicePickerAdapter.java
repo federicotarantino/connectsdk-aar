@@ -71,11 +71,11 @@ public class DevicePickerAdapter extends ArrayAdapter<ConnectableDevice> {
             text = device.getModelName();
         }
 
-        view.setBackgroundColor(Color.BLACK);
+        //view.setBackgroundColor(Color.BLACK);
 
         TextView textView = (TextView) view.findViewById(textViewResourceId);
         textView.setText(text);
-        textView.setTextColor(Color.WHITE);
+        textView.setTextColor(Color.BLACK);
 
         boolean isDebuggable =  (0 != (context.getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE));
         boolean hasNoFilters = DiscoveryManager.getInstance().getCapabilityFilters().size() == 0;
@@ -89,7 +89,7 @@ public class DevicePickerAdapter extends ArrayAdapter<ConnectableDevice> {
 
         if (shouldShowServiceNames) {
             subTextView.setText(serviceNames);
-            subTextView.setTextColor(Color.WHITE);
+            subTextView.setTextColor(Color.BLACK);
         } else {
             subTextView.setText(null);
         }
