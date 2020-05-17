@@ -81,8 +81,7 @@ public class CastDiscoveryProvider implements DiscoveryProvider {
         if (mMediaRouteSelector == null) {
             try {
                 mMediaRouteSelector = new MediaRouteSelector.Builder()
-                .addControlCategory(CastMediaControlIntent.categoryForCast(
-                        CastService.getApplicationID()))
+                .addControlCategory(CastMediaControlIntent.categoryForCast(CastService.getApplicationID()))
                 .build();
             } catch (IllegalArgumentException e) {
                 Log.w(Util.T, "Invalid application ID: " + CastService.getApplicationID());
