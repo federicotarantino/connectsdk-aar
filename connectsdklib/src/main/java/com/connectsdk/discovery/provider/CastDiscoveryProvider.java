@@ -171,6 +171,10 @@ public class CastDiscoveryProvider implements DiscoveryProvider {
 
     	private void addOrUpdateRoute(MediaRouter router, RouteInfo route) {
         	CastDevice castDevice = CastDevice.getFromBundle(route.getExtras());
+        	if(!castDevice.hasCapability(CastDevice.CAPABILITY_VIDEO_OUT)){
+        	    // exclude google home
+        	    return;
+            }
             String uuid = castDevice.getDeviceId();
 
         	ServiceDescription foundService = foundServices.get(uuid);
