@@ -83,7 +83,8 @@ public class DevicePickerAdapter extends ArrayAdapter<ConnectableDevice> {
         String serviceNames = device.getConnectedServiceNames();
         boolean hasServiceNames = (serviceNames != null && serviceNames.length() > 0);
 
-        boolean shouldShowServiceNames = hasServiceNames && (isDebuggable || hasNoFilters);
+        //boolean shouldShowServiceNames = hasServiceNames && (isDebuggable || hasNoFilters);
+        boolean shouldShowServiceNames = hasServiceNames;
 
         TextView subTextView = (TextView) view.findViewById(subTextViewResourceId);
 
